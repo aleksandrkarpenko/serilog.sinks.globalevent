@@ -6,6 +6,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <UserSecretsId>1a41b8ff-9490-40a3-abf0-95a7b488ccdf</UserSecretsId>
     <PackageProjectUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <Authors>Alex Karpenko</Authors>
     <Product />
     <Description>Subscribe to Serilog log events globally</Description>
