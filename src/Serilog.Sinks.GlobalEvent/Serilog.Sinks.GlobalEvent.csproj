@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <UserSecretsId>1a41b8ff-9490-40a3-abf0-95a7b488ccdf</UserSecretsId>
+    <PackageProjectUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</PackageProjectUrl>
+    <Authors>Alex Karpenko</Authors>
+    <Product />
+    <Description>Subscribe to Serilog log events globally</Description>
+    <RepositoryUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</RepositoryUrl>
+    <PackageTags>serilog;event</PackageTags>
+    <Copyright>https://licenses.nuget.org/Apache-2.0</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
