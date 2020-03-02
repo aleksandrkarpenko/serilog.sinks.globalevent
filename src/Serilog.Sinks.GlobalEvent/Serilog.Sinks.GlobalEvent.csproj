@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>net45;net46;netstandard1.0;netstandard1.3;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <UserSecretsId>1a41b8ff-9490-40a3-abf0-95a7b488ccdf</UserSecretsId>
@@ -15,6 +15,7 @@
     <Copyright>https://licenses.nuget.org/Apache-2.0</Copyright>
     <RepositoryType>git</RepositoryType>
     <SignAssembly>false</SignAssembly>
+    <VersionPrefix>1.0.2</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>

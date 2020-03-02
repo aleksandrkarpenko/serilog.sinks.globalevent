@@ -6,10 +6,10 @@ namespace Serilog.Sinks.GlobalEvent
     public static class GlobalEventSinkExtensions
     {
         public static LoggerConfiguration GlobalEvent(
-                  this LoggerSinkConfiguration loggerConfiguration,
+                  this LoggerSinkConfiguration loggerConfiguration, Action<GlobalEventConfiguration> configuration = null,
                   IFormatProvider formatProvider = null)
         {
-            return loggerConfiguration.Sink(new GlobalEventSink(formatProvider));
+            return loggerConfiguration.Sink(new GlobalEventSink(formatProvider, configuration));
         }
     }
 }
