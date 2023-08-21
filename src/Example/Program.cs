@@ -5,19 +5,19 @@ using Serilog.Sinks.GlobalEvent;
 
 namespace Example
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var loggerConfiguraion = new LoggerConfiguration()
+            var loggerConfiguration = new LoggerConfiguration()
                 .WriteTo.GlobalEvent(config =>
                 {
                     config.MinimumLevel = LogEventLevel.Information;
                 });
 
-            Log.Logger = loggerConfiguraion.CreateLogger();
+            Log.Logger = loggerConfiguration.CreateLogger();
 
-            GlobalLoggerEvent.RegisterHandler(eventMessage => Console.WriteLine(eventMessage));
+            GlobalLoggerEvent.RegisterHandler((level, timestamp, renderedMessage) => Console.WriteLine(renderedMessage));
 
             Log.Information("Test log message");
 

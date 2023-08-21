@@ -7,23 +7,25 @@ namespace Serilog.Sinks.GlobalEvent
     public sealed class GlobalEventSink : ILogEventSink
     {
         private readonly IFormatProvider _formatProvider;
-        private readonly GlobalEventConfiguration configuration;
+        private readonly GlobalEventConfiguration _configuration;
 
         public GlobalEventSink(IFormatProvider formatProvider, Action<GlobalEventConfiguration> action = null)
         {
-            configuration = new GlobalEventConfiguration();
+            _configuration = new GlobalEventConfiguration();
 
-            action?.Invoke(configuration);
+            action?.Invoke(_configuration);
 
             _formatProvider = formatProvider;
         }
 
         public void Emit(LogEvent logEvent)
         {
-            if (logEvent.Level > configuration.MinimumLevel)
+            if (logEvent.Level > _configuration.MinimumLevel)
+            {
                 return;
+            }
 
-            GlobalLoggerEvent.Emit(logEvent.RenderMessage(_formatProvider));
+            GlobalLoggerEvent.Emit(logEvent.Level, logEvent.Timestamp, logEvent.RenderMessage(_formatProvider));
         }
     }
 }

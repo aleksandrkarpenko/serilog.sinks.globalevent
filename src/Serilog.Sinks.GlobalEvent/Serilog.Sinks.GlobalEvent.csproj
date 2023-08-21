@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net45;net46;netstandard1.0;netstandard1.3;netstandard2.0</TargetFrameworks>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <UserSecretsId>1a41b8ff-9490-40a3-abf0-95a7b488ccdf</UserSecretsId>
-    <PackageProjectUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
-    <Authors>Alex Karpenko</Authors>
-    <Product />
-    <Description>Subscribe to Serilog log events globally</Description>
-    <RepositoryUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</RepositoryUrl>
-    <PackageTags>serilog;event</PackageTags>
-    <Copyright>https://licenses.nuget.org/Apache-2.0</Copyright>
-    <RepositoryType>git</RepositoryType>
-    <SignAssembly>false</SignAssembly>
-    <VersionPrefix>1.0.2</VersionPrefix>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net462;net471;netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0</TargetFrameworks>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <UserSecretsId>1a41b8ff-9490-40a3-abf0-95a7b488ccdf</UserSecretsId>
+        <PackageProjectUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</PackageProjectUrl>
+        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+        <Authors>Alex Karpenko</Authors>
+        <Product/>
+        <Description>Subscribe to Serilog log events globally</Description>
+        <RepositoryUrl>https://github.com/aleksandrkarpenko/serilog.sinks.globalevent</RepositoryUrl>
+        <PackageTags>serilog;event</PackageTags>
+        <Copyright>https://licenses.nuget.org/Apache-2.0</Copyright>
+        <RepositoryType>git</RepositoryType>
+        <SignAssembly>false</SignAssembly>
+        <VersionPrefix>2.0.0</VersionPrefix>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.9.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Serilog" Version="3.0.1"/>
+    </ItemGroup>
 
 </Project>

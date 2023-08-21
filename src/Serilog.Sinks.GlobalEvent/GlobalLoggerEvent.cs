@@ -1,4 +1,5 @@
 ﻿using System;
+using Serilog.Events;
 
 namespace Serilog.Sinks.GlobalEvent
 {
@@ -11,19 +12,19 @@ namespace Serilog.Sinks.GlobalEvent
 
         }
 
-        private event Action<string> OnLog;
+        private event Action<LogEventLevel, DateTimeOffset, string> OnLog;
 
-        public static void Emit(string logMessage)
+        public static void Emit(LogEventLevel level, DateTimeOffset timestamp, string logMessage)
         {
-            Instance.Value.OnLog?.Invoke(logMessage);
+            Instance.Value.OnLog?.Invoke(level, timestamp, logMessage);
         }
 
-        public static void RegisterHandler(Action<string> handler)
+        public static void RegisterHandler(Action<LogEventLevel, DateTimeOffset, string> handler)
         {
             Instance.Value.OnLog += handler;
         }
 
-        public static void RemoveHandler(Action<string> handler)
+        public static void RemoveHandler(Action<LogEventLevel, DateTimeOffset, string> handler)
         {
             Instance.Value.OnLog -= handler;
         }
