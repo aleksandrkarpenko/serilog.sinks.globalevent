@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.GlobalEvent;
@@ -7,21 +8,46 @@ namespace Example
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main()
         {
-            var loggerConfiguration = new LoggerConfiguration()
-                .WriteTo.GlobalEvent(config =>
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.GlobalEvent(config => config.MinimumLevel = LogEventLevel.Information)
+                .CreateLogger();
+
+            using var consoleSubscription = GlobalLoggerEvent.RegisterHandler(
+                (level, timestamp, renderedMessage) =>
+                    Console.WriteLine($"[{timestamp:HH:mm:ss} {level}] {renderedMessage}"));
+
+            using var exceptionSubscription = GlobalLoggerEvent.RegisterHandler((LogEvent e) =>
+            {
+                if (e.Exception != null)
                 {
-                    config.MinimumLevel = LogEventLevel.Information;
-                });
+                    Console.WriteLine($"  -> exception: {e.Exception.GetType().Name}: {e.Exception.Message}");
+                }
+            });
 
-            Log.Logger = loggerConfiguration.CreateLogger();
+            using var asyncSubscription = GlobalLoggerEvent.RegisterHandler(async (LogEvent e) =>
+            {
+                await Task.Delay(50);
+                Console.WriteLine($"  -> async delivered: {e.Level} with {e.Properties.Count} property(ies)");
+            });
 
-            GlobalLoggerEvent.RegisterHandler((level, timestamp, renderedMessage) => Console.WriteLine(renderedMessage));
+            Log.Debug("filtered out by sink MinimumLevel");
+            Log.Information("hello {Name}", "world");
+            Log.Warning("disk usage at {Percent}%", 87);
 
-            Log.Information("Test log message");
+            try
+            {
+                throw new InvalidOperationException("simulated failure");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "operation failed");
+            }
 
-            Console.ReadLine();
+            await GlobalLoggerEvent.FlushAsync(TimeSpan.FromSeconds(5));
+            await Log.CloseAndFlushAsync();
         }
     }
 }
