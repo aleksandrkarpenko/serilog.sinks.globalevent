@@ -29,7 +29,7 @@
 
         <SignAssembly>false</SignAssembly>
         <UserSecretsId>1a41b8ff-9490-40a3-abf0-95a7b488ccdf</UserSecretsId>
-        <VersionPrefix>4.3.0</VersionPrefix>
+        <VersionPrefix>4.3.1</VersionPrefix>
     </PropertyGroup>
 
     <ItemGroup>
